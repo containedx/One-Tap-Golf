@@ -9,8 +9,11 @@ public class GameController : MonoBehaviour
 
     public GameObject pointPrefab;
 
-    public int numberOfPoints;
+    [SerializeField]
+    int numberOfPoints;
     GameObject[] points;
+    [SerializeField]
+    float timeRate;
 
     [SerializeField]
     float force;
@@ -47,6 +50,7 @@ public class GameController : MonoBehaviour
     void InstantiatePosition()
     {
         start = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        InstantiatePoints();
     }
 
     void Pointing()
@@ -57,12 +61,26 @@ public class GameController : MonoBehaviour
         v = direction * distance * force;
 
         IncreaseForce();
+        CalculatePositions();
     }
 
     void Throw()
     {
         ball.ThrowBall(v);
-        force = 100;
+        force = 10; //back to initial force
+    }
+
+    void CalculatePositions()
+    {
+        var t = timeRate;
+        for(int i=0; i < numberOfPoints; i++)
+        {
+            var x = ball.transform.position.x + v.x * t;
+            var y = (ball.transform.position.y + v.y * t) - (Physics2D.gravity.magnitude * t * t) / 2f;
+
+            points[i].transform.position = new Vector2(x, y);
+            t += timeRate;
+        }
     }
 
     void InstantiatePoints()

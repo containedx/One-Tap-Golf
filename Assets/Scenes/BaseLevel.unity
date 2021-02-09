@@ -515,7 +515,8 @@ MonoBehaviour:
   pointPrefab: {fileID: 333461905841628277, guid: 5b23af5d63e9b494bbe66c906df67c6e,
     type: 3}
   numberOfPoints: 10
-  force: 100
+  timeRate: 0.001
+  force: 10
 --- !u!4 &1277105705
 Transform:
   m_ObjectHideFlags: 0
