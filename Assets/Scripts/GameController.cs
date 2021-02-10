@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
     public Ball ball;
+    public Hole hole;
 
     public Trajectory trajectory;
 
@@ -41,9 +42,12 @@ public class GameController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //Debug.Log(collision.transform.name);
+        //GameController (empty object) is located in the hole
+        //and has attached collider at the bottom of the hole
         score += 1;
         scoreText.text = score.ToString();
+        ball.SetInitailPosition();
+        hole.SetRandomPosition();
     }
 
 

@@ -199,7 +199,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 435210426}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.43, y: -2.91, z: 0}
+  m_LocalPosition: {x: -5.4, y: -2.9, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -218,6 +218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 435210430}
+  InitialPosition: {x: -5.4, y: -2.9}
 --- !u!50 &435210430
 Rigidbody2D:
   serializedVersion: 4
@@ -519,6 +520,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ball: {fileID: 435210429}
+  hole: {fileID: 1025336201}
   trajectory: {fileID: 1991139597}
   force: 5
   scoreText: {fileID: 1557389834}
