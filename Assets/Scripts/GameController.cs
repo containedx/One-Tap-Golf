@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -76,7 +77,7 @@ public class GameController : MonoBehaviour
         for(int i=0; i < numberOfPoints; i++)
         {
             var x = ball.transform.position.x + v.x * t;
-            var y = (ball.transform.position.y + v.y * t) - (Physics2D.gravity.magnitude * t * t) / 2f;
+            var y = (ball.transform.position.y + v.y * t) - (10 * t * t) / 2f;
 
             points[i].transform.position = new Vector2(x, y);
             t += timeRate;
