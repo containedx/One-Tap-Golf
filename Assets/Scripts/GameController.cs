@@ -77,6 +77,6 @@ public class GameController : MonoBehaviour
 
     void IncreaseForce()
     {
-        force += 0.001f;
+        force += (0.001f * (score+1));
     }
 }
