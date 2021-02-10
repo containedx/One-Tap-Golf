@@ -59,11 +59,11 @@ public class GameController : MonoBehaviour
     {
         ball.ThrowBall(v);
         trajectory.Active(false);
-        force = 10; //back to initial force
+        force = 5; //back to initial force
     }
 
     void IncreaseForce()
     {
-        force += 0.1f;
+        force += 0.001f;
     }
 }

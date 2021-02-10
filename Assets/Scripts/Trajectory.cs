@@ -17,7 +17,6 @@ public class Trajectory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        points = new GameObject[numberOfPoints];
         InstantiatePoints();
     }
 
@@ -41,9 +40,12 @@ public class Trajectory : MonoBehaviour
 
     void InstantiatePoints()
     {
+        points = new GameObject[numberOfPoints];
         for (int i = 0; i < numberOfPoints; i++)
         {
             points[i] = Instantiate(pointPrefab, transform.position, Quaternion.identity);
+            points[i].transform.parent = trajectory.transform;
         }
+        Active(false);
     }
 }
