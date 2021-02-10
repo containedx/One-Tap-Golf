@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
@@ -19,8 +20,9 @@ public class GameController : MonoBehaviour
     Vector2 v;
     float distance;
 
+    public Text scoreText;
+    int score=0;
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetButtonDown("Fire1")) //if LMB clicked
@@ -35,6 +37,13 @@ public class GameController : MonoBehaviour
         {
             Throw();
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //Debug.Log(collision.transform.name);
+        score += 1;
+        scoreText.text = score.ToString();
     }
 
 
