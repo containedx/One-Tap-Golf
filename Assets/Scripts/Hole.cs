@@ -12,6 +12,6 @@ public class Hole : MonoBehaviour
     public void SetRandomPosition()
     {
         //Random Hole Position in Right Part Of Screen
-        transform.position = new Vector3(Random.Range(0f, 6.8f), transform.position.y, transform.position.z);
+        transform.position = new Vector3(Random.Range(0f, 8f), transform.position.y, transform.position.z);
     }
 }

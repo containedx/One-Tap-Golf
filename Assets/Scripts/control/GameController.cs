@@ -13,6 +13,8 @@ public class GameController : MonoBehaviour
     public Trajectory trajectory;
 
     public EndOfScreen endOfScreen;
+    public BehindHole behindHole;
+    public GameObject gameOverScreen;
 
     [SerializeField]
     float force;
@@ -23,13 +25,16 @@ public class GameController : MonoBehaviour
     Vector2 v;
     float distance;
 
+    bool pointing=false;
+
     public Text scoreText;
     int score=0;
 
     void Update()
     {
         HandleThrowing();
-        HandleEndOfScreen();        
+        HandleEndOfScreen();
+        HandleGameOver();
     }
 
     void HandleThrowing()
@@ -37,8 +42,9 @@ public class GameController : MonoBehaviour
         if (Input.GetButtonDown("Fire1")) //if LMB clicked
         {
             InstantiatePosition();
+            pointing = true;
         }
-        if (Input.GetButton("Fire1"))
+        if (pointing)
         {
             Pointing();
         }
@@ -56,19 +62,31 @@ public class GameController : MonoBehaviour
         }
     }
 
+    void HandleGameOver()
+    {
+        if(behindHole.entered)
+        {
+            gameOverScreen.SetActive(true);
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //GameController (empty object) is located in the hole
         //and has attached collider at the bottom of the hole
         if (collision.transform.name == "Ball")
         {
-            score += 1;
-            scoreText.text = score.ToString();
-            ball.SetInitailPosition();
-            hole.SetRandomPosition();
+            NextLevel();
         }
     }
 
+    void NextLevel()
+    {
+        score += 1;
+        scoreText.text = score.ToString();
+        ball.SetInitailPosition();
+        hole.SetRandomPosition();
+    }
 
     void InstantiatePosition()
     {
@@ -89,6 +107,7 @@ public class GameController : MonoBehaviour
 
     void Throw()
     {
+        pointing = false;
         ball.ThrowBall(v);
         trajectory.Active(false);
         force = 5; //back to initial force
