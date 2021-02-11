@@ -12,6 +12,8 @@ public class GameController : MonoBehaviour
 
     public Trajectory trajectory;
 
+    public EndOfScreen endOfScreen;
+
     [SerializeField]
     float force;
 
@@ -25,6 +27,12 @@ public class GameController : MonoBehaviour
     int score=0;
 
     void Update()
+    {
+        HandleThrowing();
+        HandleEndOfScreen();        
+    }
+
+    void HandleThrowing()
     {
         if (Input.GetButtonDown("Fire1")) //if LMB clicked
         {
@@ -40,14 +48,25 @@ public class GameController : MonoBehaviour
         }
     }
 
+    void HandleEndOfScreen()
+    {
+        if (endOfScreen.entered)
+        {
+            Throw();
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //GameController (empty object) is located in the hole
         //and has attached collider at the bottom of the hole
-        score += 1;
-        scoreText.text = score.ToString();
-        ball.SetInitailPosition();
-        hole.SetRandomPosition();
+        if (collision.transform.name == "Ball")
+        {
+            score += 1;
+            scoreText.text = score.ToString();
+            ball.SetInitailPosition();
+            hole.SetRandomPosition();
+        }
     }
 
 
