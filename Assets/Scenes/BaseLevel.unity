@@ -296,7 +296,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 435210430}
-  InitialPosition: {x: -5.4, y: -2.9}
+  initialPosition: {x: -5.4, y: -2.9}
+  nogoal: 0
 --- !u!50 &435210430
 Rigidbody2D:
   serializedVersion: 4
@@ -459,7 +460,7 @@ EdgeCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

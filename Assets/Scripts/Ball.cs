@@ -7,17 +7,24 @@ public class Ball : MonoBehaviour
     public Rigidbody2D rb;
 
     [SerializeField]
-    Vector2 InitialPosition;
+    Vector2 initialPosition;
+
+    bool throwed = false;
 
     public void ThrowBall(Vector2 v)
     {
-        rb.AddForce(v);
+        if (!throwed) // to throw just once per level
+        {
+            rb.AddForce(v);
+            throwed = true;
+        }
     }
 
     public void SetInitailPosition()
     {
-        transform.position = InitialPosition;
+        transform.position = initialPosition;
         rb.velocity = Vector2.zero;
         rb.angularVelocity = 0;
+        throwed = false;
     }
 }
