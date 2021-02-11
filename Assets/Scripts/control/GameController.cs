@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour
     public BehindHole behindHole;
     public GameObject gameOverScreen;
     bool nogoal = false;
+    bool gameover = false;
 
     [SerializeField]
     float force;
@@ -33,8 +34,11 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-        HandleThrowing();
-        HandleEndOfScreen();
+        if (!gameover)
+        {
+            HandleThrowing();
+            HandleEndOfScreen();
+        }
         HandleGameOver();
     }
 
@@ -67,6 +71,7 @@ public class GameController : MonoBehaviour
     {
         if(behindHole.entered || nogoal)
         {
+            gameover = true;
             gameOverScreen.SetActive(true);
         }
     }
@@ -77,7 +82,7 @@ public class GameController : MonoBehaviour
         //and has attached collider at the bottom of the hole
         if (collision.transform.name == "Ball")
         {
-            StopCoroutine(CheckIfGoal());
+            StopAllCoroutines();
             NextLevel();
         }
     }
@@ -92,9 +97,11 @@ public class GameController : MonoBehaviour
 
     IEnumerator CheckIfGoal()
     {
+        Debug.Log("start Coroutine");
         // If ball wont enter the hole within 5second => gameover
         yield return new WaitForSeconds(5f);
         nogoal = true;
+        Debug.Log("END Coroutine");
     }
 
     void InstantiatePosition()

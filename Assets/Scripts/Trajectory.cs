@@ -25,6 +25,11 @@ public class Trajectory : MonoBehaviour
         trajectory.SetActive(b);
     }
 
+    public void DestroyTrajectory()
+    {
+        Destroy(trajectory);
+    }
+
     public void CalculatePositions(Ball ball, Vector2 v)
     {
         var t = timeRate;
