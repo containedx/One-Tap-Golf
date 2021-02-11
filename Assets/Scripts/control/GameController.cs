@@ -16,7 +16,7 @@ public class GameController : MonoBehaviour
     public BehindHole behindHole;
     public GameObject gameOverScreen;
     bool nogoal = false;
-    bool gameover = false;
+    public bool gameover = false;
 
     [SerializeField]
     float force;
@@ -30,7 +30,7 @@ public class GameController : MonoBehaviour
     bool pointing=false;
 
     public Text scoreText;
-    int score=0;
+    public int score=0;
 
     void Update()
     {
@@ -97,11 +97,9 @@ public class GameController : MonoBehaviour
 
     IEnumerator CheckIfGoal()
     {
-        Debug.Log("start Coroutine");
         // If ball wont enter the hole within 5second => gameover
         yield return new WaitForSeconds(5f);
         nogoal = true;
-        Debug.Log("END Coroutine");
     }
 
     void InstantiatePosition()

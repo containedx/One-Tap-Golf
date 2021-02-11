@@ -443,7 +443,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 623406126}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.85, y: 0.28, z: -1.6841398}
+  m_LocalPosition: {x: 1.85, y: 0.364, z: -1.6841398}
   m_LocalScale: {x: 0.83333325, y: 0.83333325, z: 0.83333325}
   m_Children: []
   m_Father: {fileID: 1025336203}
@@ -710,6 +710,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 839243619}
   m_CullTransparentMesh: 0
+--- !u!1 &958228613
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 958228615}
+  - component: {fileID: 958228614}
+  m_Layer: 0
+  m_Name: DataStorage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &958228614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 958228613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 611cb7b7915f13744a3e4c3d5a2ab25d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameController: {fileID: 1277105704}
+  Score: {fileID: 67399873}
+  bestScore: {fileID: 1226917792}
+  score: 0
+  bestscore: 0
+--- !u!4 &958228615
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 958228613}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 333.79135, y: 236.31917, z: -23.8922}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1025336200 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 167818675601167909, guid: e7ec09cf43585cc4daeb3b7a29a3c57a,
@@ -966,8 +1014,10 @@ MonoBehaviour:
   endOfScreen: {fileID: 1616989663}
   behindHole: {fileID: 623406129}
   gameOverScreen: {fileID: 1114653888}
+  gameover: 0
   force: 5
   scoreText: {fileID: 1557389834}
+  score: 0
 --- !u!4 &1277105705
 Transform:
   m_ObjectHideFlags: 0
